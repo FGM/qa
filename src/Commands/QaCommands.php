@@ -9,6 +9,7 @@ use Drupal\qa\Plugin\QaCheck\Cache\Sizes;
 use Drupal\qa\Plugin\QaCheck\Dependencies\Undeclared;
 use Drupal\qa\Plugin\QaCheck\References\Integrity;
 use Drupal\qa\Plugin\QaCheck\References\TaxonomyIndex;
+use Drupal\qa\Plugin\QaCheck\Sql\ChangesDetector;
 use Drupal\qa\Plugin\QaCheck\System\ExternalCode;
 use Drupal\qa\Plugin\QaCheck\System\UnusedExtensions;
 use Drupal\qa\Plugin\QaCheckManager;
@@ -135,6 +136,17 @@ class QaCommands extends DrushCommands {
    */
   public function cacheSizes() {
     $this->runPlugin(Sizes::NAME);
+  }
+
+  /**
+   * Show changes between two databases.
+   *
+   * @command qa:sql:changes
+   *
+   * @throws \Drupal\Component\Plugin\Exception\PluginException
+   */
+  public function sqlChanges() {
+    $this->runPlugin(ChangesDetector::NAME);
   }
 
   /**
